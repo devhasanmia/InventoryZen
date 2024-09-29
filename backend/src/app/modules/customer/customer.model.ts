@@ -18,7 +18,6 @@ const customerSchema = new Schema<TCustomer>(
     },
     nid: {
       type: Number,
-      unique: true,
       default: 0
     },
     due: {
