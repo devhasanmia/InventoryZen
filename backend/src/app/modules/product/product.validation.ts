@@ -40,7 +40,9 @@ export const productValidationSchema = z.object({
       required_error: "অনুগ্রহ করে প্রোডাক্টের ক্যাটেগরি প্রদান করুন।",
       invalid_type_error: "প্রোডাক্টের ক্যাটেগরি অবশ্যই একটি স্ট্রিং হতে হবে।",
     }),
-    unit: TUnit,
+    unit: TUnit.refine((value) => value !== null, {
+      message: "অনুগ্রহ করে একটি বৈধ ইউনিট নির্বাচন করুন।",
+    }),
     SKU: z.string({
       required_error: "অনুগ্রহ করে প্রোডাক্টের SKU প্রদান করুন।",
       invalid_type_error: "প্রোডাক্টের SKU অবশ্যই একটি স্ট্রিং হতে হবে।",

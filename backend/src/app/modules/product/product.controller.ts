@@ -40,8 +40,37 @@ const getProductById: RequestHandler = async (req, res, next) => {
     }
 }
 
+const updateProduct: RequestHandler = async (req, res, next) => {
+    try {
+        const product = await ProductService.update(req.params.id, req.body);
+        res.json({
+            success: true,
+            message: "নির্বাচিত প্রোডাক্টের তথ্য সফলভাবে হালনাগাদ করা হয়েছে!",
+            data: product,
+
+        });
+    } catch (error) {
+        next(error);
+    }
+}
+
+const deleteProduct: RequestHandler = async (req, res, next) => {
+    try {
+        const product = await ProductService.delete(req.params.id);
+        res.json({
+            success: true,
+            message: "নির্বাচিত প্রোডাক্টটি সফলভাবে মুছে ফেলা হয়েছে!",
+            data: product,
+        });
+    } catch (error) {
+        next(error);
+    }
+}
+
 export const ProductController = {
     createProduct,
     getAllProducts,
-    getProductById
+    getProductById,
+    updateProduct,
+    deleteProduct,
 }

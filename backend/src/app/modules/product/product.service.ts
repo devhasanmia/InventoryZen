@@ -24,10 +24,26 @@ const getProductById = async (id: string) => {
     return product;
 }
 
+const updateProduct = async (id: string, payload: TProduct) => {
+    const product = await Product.findByIdAndUpdate(id, payload, { new: true }).populate("productCategory", "categoryName");
+    if (!product) {
+        throw new AppError(httpStatus.NOT_FOUND, "কোন প্রোডাক্ট পাওয়া যায়নি।");
+    }
+    return product;
+}
 
+const deleteProduct = async (id: string) => {
+    const product = await Product.findByIdAndDelete(id);
+    if (!product) {
+        throw new AppError(httpStatus.NOT_FOUND, "কোন প্রোডাক্ট পাওয়া যায়নি।");
+    }
+    return product;
+}
 
 export const ProductService = {
     create: createProduct,
     getAll: getAllProducts,
     getById: getProductById,
+    update: updateProduct,
+    delete: deleteProduct,
 }
