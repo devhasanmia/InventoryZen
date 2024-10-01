@@ -10,5 +10,6 @@ router.post(
   StockController.addStack
 );
 
+router.get("/:id", StockController.getStock);
 
 export const StockRouter = router;
