@@ -9,7 +9,7 @@ const createProduct = async (payload: TProduct) => {
 }
 
 const getAllProducts = async () => {
-    const products = await Product.find().populate("productCategory", "categoryName");
+    const products = await Product.find();
     if (products.length === 0) {
         throw new AppError(httpStatus.NOT_FOUND, "কোন প্রোডাক্ট পাওয়া যায়নি।");
     }

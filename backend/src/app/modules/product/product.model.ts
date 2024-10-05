@@ -1,5 +1,6 @@
 import { model, Schema } from "mongoose";
 import { TProduct } from "./product.interface";
+import { string } from "zod";
 
 const productSchema = new Schema<TProduct>(
   {
@@ -12,7 +13,7 @@ const productSchema = new Schema<TProduct>(
       required: true,
     },
     productCategory: {
-      type: Schema.Types.ObjectId,
+      type: String,
       ref: "Category",
     },
     unit: {

@@ -2,6 +2,9 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { useCreateCustomerMutation } from "../../redux/api/api";
 import Swal from "sweetalert2";
 import { useEffect, useState } from "react";
+import Label from "../../components/ui/Label";
+import Input from "../../components/ui/input";
+import Button from "../../components/ui/Button";
 
 type Inputs = {
   customerName: string;
@@ -14,18 +17,17 @@ type Inputs = {
 type errTypes = {
   path: string;
   message: string;
-}
+};
 
 const AddCustomer = () => {
   const [createCustomer, { isError, isLoading, isSuccess, error }] =
     useCreateCustomerMutation();
-    const [errorMsg, setErrorMsg] = useState<errTypes[]>([]);
-
+  const [errorMsg, setErrorMsg] = useState<errTypes[]>([]);
 
   const { register, handleSubmit, reset } = useForm<Inputs>();
 
   const onSubmit: SubmitHandler<Inputs> = (formData) => {
-    createCustomer(formData)
+    createCustomer(formData);
   };
 
   useEffect(() => {
@@ -52,10 +54,8 @@ const AddCustomer = () => {
 
   // Error message extract
   const mappedError = (fieldName: string) => {
-    return errorMsg.find(err=> err.path === fieldName)?.message || "";
-  }
-
-  
+    return errorMsg.find((err) => err.path === fieldName)?.message || "";
+  };
 
   return (
     <div className="min-h-screen bg-gray-100 p-6">
@@ -68,107 +68,81 @@ const AddCustomer = () => {
       >
         {/* Customer Name */}
         <div className="mb-4">
-          <label htmlFor="customerName" className="block text-gray-700">
-            গ্রাহকের নাম
-          </label>
-          <input
-            {...register("customerName")}
+          <Label name="customerName" text="গ্রাহকের নাম" />
+          <Input
             type="text"
-            id="customerName"
             placeholder="গ্রাহকের নাম লিখুন"
-            className="mt-1 block w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring focus:ring-blue-400"
+            register={register("customerName")}
           />
-          {
-            mappedError("customerName") && (
-              <p className="text-red-500 text-xs italic">{mappedError("customerName")}</p>
-            )
-          }
+          {mappedError("customerName") && (
+            <p className="text-red-500 text-xs italic">
+              {mappedError("customerName")}
+            </p>
+          )}
         </div>
 
         {/* Mobile Number */}
         <div className="mb-4">
-          <label htmlFor="mobileNumber" className="block text-gray-700">
-            মোবাইল নম্বর
-          </label>
-          <input
-            {...register("mobileNumber", { required: "মোবাইল নম্বর প্রয়োজন" })}
+          <Label name="mobileNumber" text="মোবাইল নম্বর" />
+          <Input
             type="text"
-            id="mobileNumber"
             placeholder="মোবাইল নম্বর লিখুন"
-            className="mt-1 block w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring focus:ring-blue-400"
+            register={register("mobileNumber")}
           />
-          {
-            mappedError("mobileNumber") && (
-              <p className="text-red-500 text-xs italic">{mappedError("mobileNumber")}</p>
-            )
-          }
+          {mappedError("mobileNumber") && (
+            <p className="text-red-500 text-xs italic">
+              {mappedError("mobileNumber")}
+            </p>
+          )}
         </div>
 
         {/* Address */}
         <div className="mb-4">
-          <label htmlFor="address" className="block text-gray-700">
-            ঠিকানা
-          </label>
-          <input
-            {...register("address", { required: "ঠিকানা প্রয়োজন" })}
+          <Label name="address" text="ঠিকানা" />
+          <Input
             type="text"
-            id="address"
             placeholder="ঠিকানা লিখুন"
-            className="mt-1 block w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring focus:ring-blue-400"
+            register={register("address")}
           />
-          {
-            mappedError("address") && (
-              <p className="text-red-500 text-xs italic">{mappedError("address")}</p>
-            )
-          }
+          {mappedError("address") && (
+            <p className="text-red-500 text-xs italic">
+              {mappedError("address")}
+            </p>
+          )}
         </div>
 
         {/* NID */}
         <div className="mb-4">
-          <label htmlFor="nid" className="block text-gray-700">
-            ভোটার আইডি নাম্বার
-          </label>
-          <input
-            {...register("nid", { valueAsNumber: true })}
+          <Label name="nid" text="ভোটার আইডি নাম্বার" />
+          <Input
             type="number"
-            id="nid"
             placeholder="ভোটার আইডি নাম্বার লিখুন"
-            className="mt-1 block w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring focus:ring-blue-400"
+            register={register("nid", { valueAsNumber: true })}
           />
-          {
-            mappedError("nid") && (
-              <p className="text-red-500 text-xs italic">{mappedError("nid")}</p>
-            )
-          }
+          {mappedError("nid") && (
+            <p className="text-red-500 text-xs italic">{mappedError("nid")}</p>
+          )}
         </div>
 
         {/* Due */}
         <div className="mb-4">
-          <label htmlFor="due" className="block text-gray-700">
-            বাকি (৳)
-          </label>
-          <input
-            {...register("due", { valueAsNumber: true })}
+          <Label name="due" text="বাকি (৳)" />
+          <Input
             type="number"
-            id="due"
             placeholder="বাকি টাকা লিখুন"
-            className="mt-1 block w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring focus:ring-blue-400"
+            register={register("due", { valueAsNumber: true })}
           />
-          {
-            mappedError("due") && (
-              <p className="text-red-500 text-xs italic">{mappedError("due")}</p>
-            )
-          }
+          {mappedError("due") && (
+            <p className="text-red-500 text-xs italic">{mappedError("due")}</p>
+          )}
         </div>
 
         {/* Submit Button */}
-        <button
+        <Button
           type="submit"
-          className="w-full bg-blue-500 text-white py-2 rounded-lg shadow-md hover:bg-blue-600 transition duration-300"
-          disabled={isLoading}
-        >
-          {isLoading ? "যোগ হচ্ছে..." : "গ্রাহক যোগ করুন"}
-        </button>
+          text={`${isLoading ? "যোগ হচ্ছে..." : "গ্রাহক যোগ করুন"}`}
+          background="blue"
+        />
       </form>
     </div>
   );

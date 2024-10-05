@@ -9,7 +9,9 @@ router.post(
   validateRequest(productValidationSchema),
   ProductController.createProduct
 );
+
 router.get("/", ProductController.getAllProducts);
+
 router.get("/:id", ProductController.getProductById);
 router.put(
   "/:id",

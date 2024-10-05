@@ -18,6 +18,8 @@ const Customer = () => {
           </button>
         </Link>
       </div>
+      <hr />
+      <br />
       {/* Customer Table */}
       <div className="bg-white shadow-md rounded-lg overflow-hidden">
         <table className="min-w-full text-left">
@@ -61,23 +63,3 @@ const Customer = () => {
 };
 
 export default Customer;
-//   const customers = [
-//     {
-//       id: 1,
-//       customerName: 'John Doe',
-//       mobileNumber: '0123456789',
-//       address: '123 Main St, Dhaka',
-//       nid: 1234567890123,
-//       due: 500,
-//     },
-//     {
-//       id: 2,
-//       customerName: 'Jane Smith',
-//       mobileNumber: '0987654321',
-//       address: '456 Another St, Chittagong',
-//       nid: 9876543210123,
-//       due: 200,
-//     },
-
-// Add more customer data as needed
-//   ];

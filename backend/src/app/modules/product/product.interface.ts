@@ -29,7 +29,7 @@ export type TUnit =
 export type TProduct = {
   productName: string;
   productBrand: string;
-  productCategory: Types.ObjectId;
+  productCategory: string;
   unit: TUnit;
   SKU: string;
 };

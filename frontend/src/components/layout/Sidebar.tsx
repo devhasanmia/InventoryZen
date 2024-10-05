@@ -16,7 +16,9 @@ const items = [
         key: "customer",
       },
       {
-        label: <NavLink to={"/customer/add-customer"}>নতুন গ্রাহক যুক্ত</NavLink>,
+        label: (
+          <NavLink to={"/customer/add-customer"}>নতুন গ্রাহক যুক্ত</NavLink>
+        ),
         key: "add-customer",
       },
     ],
@@ -25,13 +27,25 @@ const items = [
     label: "পণ্য",
     key: "Products",
     children: [
-      { label: "নতুন ক্রয়", key: "new-purchase" },
+      {
+        label: <NavLink to={"/product"}>পণ্যদ্রব্যের তালিকা</NavLink>,
+      },
+      {
+        label: (
+          <NavLink to={"/product/add-product"}>পণ্যদ্রব্যে ক্রয় করুন</NavLink>
+        ),
+        key: "add-product",
+      },
       { label: "নতুন বিক্রয়", key: "new-sale" },
     ],
   },
   {
-    label: "স্টক এডজাস্টমেন্ট",
+    label: <NavLink to={"/stock-adjustment"}>স্টক এডজাস্টমেন্ট</NavLink>,
     key: "stock-adjustment",
+  },
+  {
+    label: <NavLink to={"/category"}>ক্যাটাগরি</NavLink>,
+    key: "category",
   },
 ];
 const Sidebar = () => {
@@ -50,7 +64,7 @@ const Sidebar = () => {
         <Link to="/">
           <h1 className="text-2xl font-bold tracking-tight">
             <span>ইনভেন্টরি</span>
-            <span className="text-[#1677ff] ml-2 animate-bounce">জেন.</span>
+            <span className="text-[#ffb703] ml-2 animate-bounce">জেন.</span>
           </h1>
         </Link>
       </div>
@@ -65,9 +79,3 @@ const Sidebar = () => {
 };
 
 export default Sidebar;
-
-//   children: [
-//     { label: "Dashboard 1", key: "11" },
-//     { label: "Dashboard 2", key: "12" },
-//     { label: "Dashboard 3", key: "13" },
-//   ],
