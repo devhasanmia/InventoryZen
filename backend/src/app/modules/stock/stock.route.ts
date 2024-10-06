@@ -9,7 +9,7 @@ router.post(
   validateRequest(stockValidationSchema),
   StockController.addStack
 );
-
+router.get("/", StockController.getAllStock);
 router.get("/:id", StockController.getStock);
 
 export const StockRouter = router;

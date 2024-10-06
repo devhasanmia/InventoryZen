@@ -20,6 +20,7 @@ const Input = ({ type, placeholder, register }: TInput) => {
       type={type}
       className={`mt-1 focus:ring-2 focus:ring-[#1677ff] block w-full border border-gray-300 rounded-md p-2 focus:outline-none`}
       placeholder={placeholder}
+      required={false}
     />
   );
 };

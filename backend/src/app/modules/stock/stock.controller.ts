@@ -27,8 +27,20 @@ const getStock: RequestHandler = async (req, res, next) => {
         next(error)
     }
 }
-
+const getAllStock: RequestHandler = async (req, res, next) => {
+    try {
+        const stock = await StockService.getAllStock()
+        res.status(200).json({
+            success: true,
+            message: "লোড সফল হয়েছে",
+            data: stock,
+        })
+    } catch (error) {
+        
+    }
+}
 export const StockController = {
     addStack,
-    getStock
+    getStock,
+    getAllStock
 }

@@ -3,7 +3,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 export const baseApi = createApi({
   reducerPath: "baseApi",
   baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:5000/api/v1" }),
-  tagTypes: ["customers", "categories", "product"],
+  tagTypes: ["customers", "categories", "product", "stock"],
   endpoints: (builder) => ({
     getAllCustomer: builder.query({
       query: () => ({
@@ -59,7 +59,15 @@ export const baseApi = createApi({
         url: "/stock",
         body: data,
       }),
+      invalidatesTags:["stock"]
     }),
+    getAllStock: builder.query({
+      query: () => ({
+        method: "GET",
+        url: "/stock",
+      }),
+      providesTags:["stock"]
+    })
   }),
 });
 
@@ -70,5 +78,6 @@ export const {
   useCreateCategoryMutation,
   useAddProductMutation,
   useAddStockMutation,
-  useGetAllProductQuery
+  useGetAllProductQuery,
+  useGetAllStockQuery
 } = baseApi;

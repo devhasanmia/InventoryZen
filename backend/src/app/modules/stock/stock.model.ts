@@ -41,10 +41,6 @@ const stockSchema = new Schema<TStock>(
       type: Number,
       default: 0,
     },
-    extraExpense: {
-      type: Number,
-      default: 0,
-    },
   },
   { timestamps: true }
 );

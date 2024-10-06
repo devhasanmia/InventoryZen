@@ -84,6 +84,7 @@ const AddProduct = () => {
     addProduct(formData);
     reset();
   };
+  
   return (
     <div className="min-h-screen bg-gray-100 p-6">
       <h1 className="text-3xl font-semibold text-gray-700 mb-8 text-center">

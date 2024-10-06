@@ -37,15 +37,11 @@ const stockValidationSchema = z.object({
         .default(0),
       dealer: z.string().min(3, "ডিলার নাম অন্তত ৩ অক্ষরের হতে হবে।"),
       cashPayment: z.number().min(0, "নগদ পেমেন্ট নেতিবাচক হতে পারবে না."),
-      extraExpense: z
-        .number()
-        .min(0, "অতিরিক্ত খরচ নেতিবাচক হতে পারবে না.")
-        .default(0),
     })
     .refine((data) => data.salePrice > data.purchasePrice, {
       message: "বিক্রয় মূল্য ক্রয় মূল্যের চেয়ে বেশি হতে হবে।",
       path: ["salePrice"],
-    })
+    }),
 });
 
 export default stockValidationSchema;

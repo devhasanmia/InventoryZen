@@ -10,5 +10,4 @@ export type TStock = {
   dealer: string;
   cashPayment: number;
   due: number;
-  extraExpense: number
 };
