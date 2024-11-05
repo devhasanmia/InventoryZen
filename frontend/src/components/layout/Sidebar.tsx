@@ -36,7 +36,8 @@ const items = [
         ),
         key: "add-product",
       },
-      { label: "নতুন বিক্রয়", key: "new-sale" },
+      { label: <NavLink to={"/sale"}>Sale</NavLink>
+        , key: "sale" },
     ],
   },
   {

@@ -4,7 +4,7 @@ import { FaEdit, FaTrashAlt } from "react-icons/fa";
 import { GrView } from "react-icons/gr";
 import { useGetAllStockQuery } from "../../redux/api/api";
 const Product = () => {
-  const { data } = useGetAllStockQuery(undefined);
+  const { data, isLoading } = useGetAllStockQuery(undefined);
 
   return (
     <div className="min-h-screen bg-gray-100 p-6">
@@ -42,33 +42,73 @@ const Product = () => {
             </tr>
           </thead>
           <tbody>
-            {data?.data?.map((item: any, index: number) => (
-              <tr className="border-b">
-                <td className="py-4 px-6">{index + 1}</td>
-                <td className="py-4 px-6">{item.product.SKU}</td>
-                <td className="py-4 px-6">{item.product.productName}</td>
-                <td className="py-4 px-6">{item.salePrice} ৳</td>
-                <td className="py-4 px-6">{item.quantity}</td>
-                <td className="py-4 px-6">{item.product.unit}</td>
-                <td className="py-4 px-6">{item.product.productCategory}</td>
-                <td className="py-4 px-6">{item.product.productBrand}</td>
-                <td className="py-4 px-6 text-center">
-                  <Link to={"/"}>
-                    <button className="text-blue-500 hover:text-yellow-600 mr-4">
-                      <GrView />
-                    </button>
-                  </Link>
-                  <Link to={"/"}>
-                    <button className="text-yellow-500 hover:text-yellow-600 mr-4">
-                      <FaEdit />
-                    </button>
-                  </Link>
-                  <button className="text-red-500 hover:text-red-600">
-                    <FaTrashAlt />
-                  </button>
-                </td>
-              </tr>
-            ))}
+          {
+  isLoading ? (
+    [...Array(5)].map((_, index) => (
+      <tr className="border-b animate-pulse" key={index}>
+        <td className="py-4 px-6">
+          <div className="h-4 bg-gray-300 rounded w-12"></div>
+        </td>
+        <td className="py-4 px-6">
+          <div className="h-4 bg-gray-300 rounded w-24"></div>
+        </td>
+        <td className="py-4 px-6">
+          <div className="h-4 bg-gray-300 rounded w-32"></div>
+        </td>
+        <td className="py-4 px-6">
+          <div className="h-4 bg-gray-300 rounded w-16"></div>
+        </td>
+        <td className="py-4 px-6">
+          <div className="h-4 bg-gray-300 rounded w-10"></div>
+        </td>
+        <td className="py-4 px-6">
+          <div className="h-4 bg-gray-300 rounded w-8"></div>
+        </td>
+        <td className="py-4 px-6">
+          <div className="h-4 bg-gray-300 rounded w-28"></div>
+        </td>
+        <td className="py-4 px-6">
+          <div className="h-4 bg-gray-300 rounded w-20"></div>
+        </td>
+        <td className="py-4 px-6 text-center">
+          <div className="h-4 bg-gray-300 rounded w-20 mx-auto"></div>
+        </td>
+      </tr>
+    ))
+  ) : data?.data.length > 0 ? (
+    data.data.map((item: any, index: number) => (
+      <tr className="border-b" key={index}>
+        <td className="py-4 px-6">{index + 1}</td>
+        <td className="py-4 px-6">{item.product.SKU}</td>
+        <td className="py-4 px-6">{item.product.productName}</td>
+        <td className="py-4 px-6">{item.salePrice} ৳</td>
+        <td className="py-4 px-6">{item.quantity}</td>
+        <td className="py-4 px-6">{item.product.unit}</td>
+        <td className="py-4 px-6">{item.product.productCategory}</td>
+        <td className="py-4 px-6">{item.product.productBrand}</td>
+        <td className="py-4 px-6 text-center">
+          <Link to={`/product/${item.product.SKU}/view`}>
+            <button className="text-blue-500 hover:text-yellow-600 mr-4">
+              <GrView />
+            </button>
+          </Link>
+          <Link to={`/product/${item.product.SKU}/edit`}>
+            <button className="text-yellow-500 hover:text-yellow-600 mr-4">
+              <FaEdit />
+            </button>
+          </Link>
+          <button
+            className="text-red-500 hover:text-red-600"
+          >
+            <FaTrashAlt />
+          </button>
+        </td>
+      </tr>
+    ))
+  ) : (
+    <p>No data available</p>
+  )
+}
           </tbody>
         </table>
       </div>

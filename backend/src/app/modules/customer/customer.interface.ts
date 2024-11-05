@@ -3,5 +3,5 @@ export type TCustomer = {
   mobileNumber: string;
   address: string;
   nid: number;
-  due:number;
+  due: number;
 };

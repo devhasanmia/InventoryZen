@@ -9,6 +9,7 @@ import AddCategory from "../pages/Category/AddCategory";
 import Product from "../pages/Product/Product";
 import AddProduct from "../pages/Product/AddProduct";
 import StockAdjustment from "../pages/Stock/StockAdjustment";
+import Sale from "../pages/Sale/Sale";
 
 const router = createBrowserRouter([
   {
@@ -86,6 +87,16 @@ const router = createBrowserRouter([
         element: <StockAdjustment />,
       },
     ],
+  },
+  {
+    path: "/sale",
+    element: <App/>,
+    children: [
+      {
+        path: '',
+        element: <Sale/>
+      }
+    ]
   },
   {
     path: "*",
