@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { LogoutOutlined, UserOutlined } from "@ant-design/icons";
+import { LogoutOutlined } from "@ant-design/icons";
 import { RiMenu2Line } from "react-icons/ri";
 import { LuPanelRightClose } from "react-icons/lu";
-import { Button, Layout, Avatar } from "antd";
+import { Button, Layout } from "antd";
 import Sidebar from "../components/Sidebar";
 import { Outlet } from "react-router-dom";
 const { Header, Content } = Layout;
@@ -38,10 +38,6 @@ const MainLayout = () => {
               marginRight: "16px",
             }}
           >
-            <Avatar size="large" icon={<UserOutlined />} />
-            <span style={{ marginLeft: "8px", color: "#fff" }}>
-              Administrator
-            </span>
             <Button
               type="text"
               icon={<LogoutOutlined />}
