@@ -28,7 +28,6 @@ const getAllCategories: RequestHandler = async (req, res, next) => {
 }
 
 
-
 export const CategoryController = {
     createCategory,
     getAllCategories,
