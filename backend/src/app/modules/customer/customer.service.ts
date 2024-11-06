@@ -9,7 +9,7 @@ const createCustomer = async (payload: TCustomer) => {
 };
 // get all customers
 const getAllCustomers = async () => {
-  const customers = await Customer.find();
+  const customers = await Customer.find().sort({ updatedAt: -1 })
   if (customers.length === 0) {
     throw new AppError(
       httpStatus.NOT_FOUND,
