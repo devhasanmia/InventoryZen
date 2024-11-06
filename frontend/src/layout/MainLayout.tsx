@@ -12,41 +12,27 @@ const MainLayout = () => {
     <Layout style={{ minHeight: "100vh" }}>
       <Sidebar collapsed={collapsed} />
       <Layout>
-        <Header
-          style={{
-            padding: 0,
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-          }}
-        >
+        <Header className="mr-3 flex justify-between items-center shadow-lg p-4 sm:p-6">
           <Button
             type="text"
             icon={collapsed ? <LuPanelRightClose /> : <RiMenu2Line />}
             onClick={() => setCollapsed(!collapsed)}
-            style={{
-              fontSize: "16px",
-              width: 64,
-              height: 64,
-              color: "#fff",
-            }}
+            className="text-white text-lg w-10 h-10 sm:w-16 sm:h-16 flex items-center justify-center transition-colors duration-200 hover:bg-gray-700"
           />
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              marginRight: "16px",
-            }}
-          >
+          <div className="flex items-center text-white">
+            <span className="hidden sm:block text-lg font-semibold">
+              Administrator
+            </span>
             <Button
               type="text"
               icon={<LogoutOutlined />}
-              style={{ marginLeft: "16px", color: "#f5222e" }}
+              className="ml-4 sm:ml-4 text-red-500 hover:text-red-700 transition-colors duration-200"
             >
-              Log Out
+              <span className="hidden sm:inline">Log Out</span>
             </Button>
           </div>
         </Header>
+
         <Content
           style={{
             margin: "24px 16px",
