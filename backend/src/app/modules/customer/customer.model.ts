@@ -17,8 +17,8 @@ const customerSchema = new Schema<TCustomer>(
       required: true,
     },
     nid: {
-      type: Number,
-      default: 0
+      type: String,
+      default: "N/A"
     },
     due: {
       type: Number,

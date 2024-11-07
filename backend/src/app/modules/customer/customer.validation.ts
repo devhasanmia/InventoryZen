@@ -56,11 +56,11 @@ const customerUpdateValidationSchema = z.object({
       .min(3, "ঠিকানা অবশ্যই অন্তত ৩ অক্ষরের হতে হবে।")
       .optional(), // Make optional
     nid: z
-      .number()
-      .optional()
-      .refine((value) => !value || value > 0, {
-        message: "এনআইডি নম্বর সঠিক হতে হবে, অথবা এটি ফাঁকা রাখা যাবে।",
-      }),
+      .string({
+        required_error: "এনআইডি নম্বর প্রদান করুন।",
+        invalid_type_error: "এনআইডি নম্বর অবশ্যই একটি স্ট্রিং হতে হবে।",
+      })
+      .optional(),
     due: z
       .number()
       .optional()

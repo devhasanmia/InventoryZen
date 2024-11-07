@@ -1,6 +1,6 @@
 import { Modal, Space, Table } from "antd";
 import { MdDelete } from "react-icons/md";
-import { FaEdit } from "react-icons/fa";
+import { FaEdit, FaUserPlus } from "react-icons/fa";
 import {
   useDeleteCustomerMutation,
   useGetAllCustomersQuery,
@@ -42,6 +42,7 @@ const Customer = () => {
       });
     }
   }, [selectedCustomer, reset]);
+  
   const [updateCustomerData] = useUpdateCustomerInfoMutation();
   const onSubmit = async (data: any) => {
     const { customerName, mobileNumber, address, nid, due } = data;
@@ -49,7 +50,7 @@ const Customer = () => {
       customerName,
       mobileNumber,
       address,
-      nid: Number(nid),
+      nid,
       due: Number(due),
       _id: "",
     };
@@ -301,10 +302,15 @@ const Customer = () => {
       >
         <p>গ্রাহক মুছে ফেলতে আপনি কি নিশ্চিত?</p>
       </Modal>
-
+      <button className="bg-emerald-400 font-semibold text-white p-2 rounded-md flex items-center gap-2">
+        <FaUserPlus />
+        <span>নতুন গ্রাহক</span>
+      </button>
+      <br />
       {/* Header Section */}
       <div className="flex flex-col md:flex-row md:items-center md:justify-between bg-white p-4 rounded-lg shadow-md mb-6">
         <h2 className="text-xl font-semibold text-gray-900">গ্রাহকের তালিকা</h2>
+
         <h2 className="text-xl font-medium text-gray-600 mt-2 md:mt-0">
           মোট{" "}
           <span className="text-blue-600 font-bold">

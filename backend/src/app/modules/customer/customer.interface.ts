@@ -2,6 +2,6 @@ export type TCustomer = {
   customerName: string;
   mobileNumber: string;
   address: string;
-  nid: number;
+  nid: string;
   due: number;
 };

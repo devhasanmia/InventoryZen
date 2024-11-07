@@ -2,6 +2,16 @@ import { baseApi } from "../../api/baseApi";
 
 const customerApi = baseApi.injectEndpoints({
     endpoints: (builder) => ({
+        // Create A new Customer Start
+        createCustomer: builder.mutation({
+            query: (customer) => ({
+                url: "/customer/create",
+                method: "POST",
+                body: customer
+            }),
+            invalidatesTags: ["customer"]
+        }),
+        // Create A new Customer End
         // Get All Customers Start
         getAllCustomers: builder.query({
             query: () => ({

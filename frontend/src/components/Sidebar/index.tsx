@@ -9,7 +9,7 @@ const Sidebar = ({ collapsed }: { collapsed: boolean }) => {
       trigger={null}
       collapsible
       collapsed={collapsed}
-      style={{ background: "#001529" }}
+      style={{ background: "#001529"}}
     >
       <div
         style={{
